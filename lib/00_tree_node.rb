@@ -10,24 +10,20 @@ attr_reader :value, :parent, :children
     end
 
 
-    def parent=(new_parent)
+    def parent=(parent)
 
+        if self.parent
+            self.parent.children.delete(self)
+        end
 
-        # @parent = parent 
-        # parent.children << self unless self.parent.nil
+        @parent = parent 
+        self.parent.children << self unless self.parent.nil?
 
-
-
-
-        # if new_parent 
-        #     new_parent 
-
-        new_parent.children << self unless new_parent.nil?
-        @parent = new_parent 
-
-        return self
     end
 
+    def add_child(child)
+        child.parent = self
+    end
 
     def remove_child(child)
         if child && !self.children.include?(child)
@@ -36,7 +32,18 @@ attr_reader :value, :parent, :children
         child.parent = nil
     end
         
+end
+
+class Searchable
 
 
+    def BFS(root, target)
+        queue = []
+        
+    end
+
+    def DFS(root, target)
+
+    end
 
 end
