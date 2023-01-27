@@ -37,13 +37,27 @@ end
 class Searchable
 
 
-    def BFS(root, target)
-        queue = []
+    def BFS(target_value)
+        queue = [self]
+
+        until queue.empty?
+            val = queue.shift()
+            if val == target
+                return val
+            else
+                queue << self.children
+            end
+        end
+        
+
+
+
+
         
     end
 
-    def DFS(root, target)
+    # def DFS(root, target)
 
-    end
+    # end
 
 end
